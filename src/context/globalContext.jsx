@@ -7,9 +7,11 @@ export const useAppContext = () => {
   return useContext(appContext);
 };
 
-const initialState = {};
-
-import React from "react";
+const initialState = {
+  cocktails: [],
+  loading: true,
+  error: null,
+};
 
 function GlobalContext({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
