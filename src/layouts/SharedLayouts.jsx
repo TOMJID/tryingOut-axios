@@ -1,13 +1,16 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Navbar from "../components/Navbar";
 import { Outlet } from "react-router";
-
+import Loading from "../components/Loading";
 function SharedLayouts() {
   return (
     <>
       <Navbar />
+
       <div className="container">
-        <Outlet />
+        <Suspense fallback={<Loading />}>
+          <Outlet />
+        </Suspense>
       </div>
     </>
   );
