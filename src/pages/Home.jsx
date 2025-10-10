@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { memo, useEffect } from "react";
 import { useAppContext } from "../context/globalContext";
 import { SET_COCKTAILS, SET_ERROR, SET_LOADING } from "../context/reducer";
+import CocktailList from "../components/CocktailList";
+import Loading from "../components/Loading";
 function Home() {
   const { cocktails, error, loading, dispatch } = useAppContext();
   const fetchCocktails = async () => {
@@ -22,7 +24,7 @@ function Home() {
   }, []);
   return (
     <>
-      <h1>home</h1>
+      {loading ? <Loading /> : <CocktailList cocktails={cocktails} />}
     </>
   );
 }

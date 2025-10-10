@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import SharedLayouts from "./layouts/SharedLayouts";
 import { lazy } from "react";
+import Home from "./pages/Home";
 
 // lazy loading the pages
-const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const Error = lazy(() => import("./pages/Error"));
 const SingleCocktail = lazy(() => import("./pages/SingleCocktail"));
