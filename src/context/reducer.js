@@ -10,7 +10,7 @@ export const reducer = (state, action) => {
         ...state,
         cocktails: payload,
         loading: false,
-        error: null,
+        error: { type: false, message: "" },
       };
     case SET_LOADING:
       return { ...state, loading: payload };

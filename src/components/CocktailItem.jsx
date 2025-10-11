@@ -8,7 +8,6 @@ function CocktailItem({
   strCategory,
   strAlcoholic,
   strGlass,
-  strInstructions,
   strDrinkThumb,
 }) {
   return (

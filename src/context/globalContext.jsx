@@ -10,7 +10,10 @@ export const useAppContext = () => {
 const initialState = {
   cocktails: [],
   loading: true,
-  error: null,
+  error: {
+    type: false,
+    message: "",
+  },
 };
 
 function GlobalContext({ children }) {

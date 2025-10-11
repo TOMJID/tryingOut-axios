@@ -6,14 +6,14 @@ import CocktailList from "../components/CocktailList";
 import Loading from "../components/Loading";
 function Home() {
   const { cocktails, error, loading, dispatch } = useAppContext();
-  
+
   // state for search input
   const [searchTerm, setSearchTerm] = React.useState("");
-  
+
   // get random letter
   const letters = "abcdefghijklmnopqrstuvwxyz";
   const randomLetter = letters[Math.floor(Math.random() * letters.length)];
-  
+
   // fetch cocktails from api
   const fetchCocktails = async (term) => {
     dispatch({ type: SET_LOADING, payload: true });
@@ -37,7 +37,7 @@ function Home() {
     }
   }, []);
 
-  // handle form submit 
+  // handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
     if (searchTerm.trim()) {
@@ -60,7 +60,9 @@ function Home() {
           </button>
         </div>
       </form>
-      {loading ? <Loading /> : <CocktailList cocktails={cocktails} />}
+      {loading && <Loading />}
+      {error.type && <div className="alert alert-danger">{error.message}</div>}
+      {<CocktailList cocktails={cocktails} />}
     </>
   );
 }
