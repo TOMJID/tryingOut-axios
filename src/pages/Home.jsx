@@ -6,7 +6,15 @@ import CocktailList from "../components/CocktailList";
 import Loading from "../components/Loading";
 function Home() {
   const { cocktails, error, loading, dispatch } = useAppContext();
+  
+  // state for search input
   const [searchTerm, setSearchTerm] = React.useState("");
+  
+  // get random letter
+  const letters = "abcdefghijklmnopqrstuvwxyz";
+  const randomLetter = letters[Math.floor(Math.random() * letters.length)];
+  
+  // fetch cocktails from api
   const fetchCocktails = async (term) => {
     dispatch({ type: SET_LOADING, payload: true });
 
@@ -22,10 +30,14 @@ function Home() {
     }
   };
 
+  // loading api when page load
   useEffect(() => {
-    fetchCocktails("margarita");
+    if (cocktails.length === 0) {
+      fetchCocktails(randomLetter);
+    }
   }, []);
 
+  // handle form submit 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (searchTerm.trim()) {
